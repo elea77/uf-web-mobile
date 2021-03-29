@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ufwebmobile">
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".MyAccountActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".HomeActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/ThemeMain">
