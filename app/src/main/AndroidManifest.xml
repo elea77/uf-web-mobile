@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ufwebmobile">
-        <activity android:name=".MyProductsActivity"></activity>
+        <activity android:name=".ProductActivity"></activity>
+        <activity android:name=".MyProductsActivity" />
         <activity android:name=".ProductsListActivity" />
         <activity android:name=".MyAccountActivity" />
         <activity android:name=".LoginActivity" />
