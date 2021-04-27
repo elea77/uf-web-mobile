@@ -3,6 +3,7 @@ package com.example.uf_web_mobile;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -77,6 +78,10 @@ public class RegisterActivity extends AppActivity {
                             Toast.makeText(RegisterActivity.this,
                                     "Signed up successfully", Toast.LENGTH_LONG).show();
                             Log.v("User", "Users:"+response);
+
+                            Intent intentLogin = new Intent(RegisterActivity.this, LoginActivity.class);
+                            startActivity(intentLogin);
+                            finish();
 
                         } else if (response.code() == 400) {
                             Toast.makeText(RegisterActivity.this,
