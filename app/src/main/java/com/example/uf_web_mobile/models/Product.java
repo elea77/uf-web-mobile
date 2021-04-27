@@ -1,4 +1,6 @@
-package com.example.uf_web_mobile;
+package com.example.uf_web_mobile.models;
+
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 

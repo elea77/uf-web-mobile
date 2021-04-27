@@ -1,12 +1,10 @@
 package com.example.uf_web_mobile;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.uf_web_mobile.models.Product;
 import com.squareup.picasso.Picasso;
 
 public class ProductActivity extends AppActivity {
@@ -36,7 +34,7 @@ public class ProductActivity extends AppActivity {
 
             // mise à jour des informations
             titleView.setText(item.getTitle());
-            priceView.setText(item.getPrice());
+            priceView.setText(item.getPrice() + "€");
 
             dateView.setText(item.getDate());
             descriptionView.setText(item.getDescription());

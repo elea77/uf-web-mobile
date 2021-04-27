@@ -38,13 +38,8 @@ public class RegisterActivity extends AppActivity {
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
+        handleRegisterDialog();
 
-        findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleRegisterDialog();
-            }
-        });
     }
 
     private void handleRegisterDialog() {

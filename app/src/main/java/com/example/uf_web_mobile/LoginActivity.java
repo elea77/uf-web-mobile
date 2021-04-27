@@ -50,12 +50,8 @@ public class LoginActivity extends AppCompatActivity {
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-        findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handleLoginDialog();
-            }
-        });
+        handleLoginDialog();
+
     }
 
     private void handleLoginDialog() {

@@ -5,10 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
+import com.example.uf_web_mobile.models.Product;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
         resId = resource;
     }
+
 
     @NonNull
     @Override
