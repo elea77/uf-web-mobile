@@ -36,6 +36,7 @@
         android:textColor="@color/white"
         android:backgroundTint="@color/white"
         android:textColorHint="@color/white"
+        android:id="@+id/email"
         android:textSize="20dp" />
 
     <EditText
@@ -51,6 +52,7 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:backgroundTint="@color/white"
+        android:id="@+id/password"
         android:textSize="20dp" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -62,6 +64,7 @@
         android:backgroundTint="@color/light_orange"
         android:textColor="@color/white"
         android:onClick="Login"
+        android:id="@+id/button"
         android:text="Se connecter" />
 
 

@@ -16,7 +16,7 @@
         android:textSize="30dp"
         android:gravity="center"
         android:padding="15dp"
-        android:text="Liste des produits"/>
+        android:text="Liste des produits" />
 
     <View
         android:layout_width="100dp"
