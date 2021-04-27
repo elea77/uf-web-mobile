@@ -51,6 +51,9 @@ public class RegisterActivity extends AppActivity {
         Button registerBtn = findViewById(R.id.register);
         EditText emailEdit = findViewById(R.id.emailEdit);
         EditText passwordEdit = findViewById(R.id.passwordEdit);
+        EditText firstNameEdit = findViewById(R.id.firstNameEdit);
+        EditText lastNameEdit = findViewById(R.id.lastNameEdit);
+        EditText phoneEdit = findViewById(R.id.phoneEdit);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,13 +63,17 @@ public class RegisterActivity extends AppActivity {
 
                 map.put("email", emailEdit.getText().toString());
                 map.put("password", passwordEdit.getText().toString());
+                map.put("firstName", firstNameEdit.getText().toString());
+                map.put("lastName", lastNameEdit.getText().toString());
+                map.put("phone", phoneEdit.getText().toString());
+
 
                 Call<Void> call = retrofitInterface.executeRegister(map);
 
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        if(response.code() == 200) {
+                        if(response.isSuccessful()) {
                             Toast.makeText(RegisterActivity.this,
                                     "Signed up successfully", Toast.LENGTH_LONG).show();
                             Log.v("User", "Users:"+response);
