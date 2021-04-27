@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -34,7 +36,6 @@ public class TestActivity extends AppCompatActivity {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                //.addConverterFactory(new NullOnEmptyConverterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -81,40 +82,25 @@ public class TestActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
 
-                        if(response.code() == 200) {
-
+                        if(response.isSuccessful()) {
 
                             LoginResult result = response.body();
 
-                            Log.v("User", "Error:"+ result);
-
-                            AlertDialog.Builder builder1 = new AlertDialog.Builder(TestActivity.this);
-                            builder1.setTitle(result.getEmail());
-                            builder1.setMessage(result.getEmail());
-
-                            builder1.show();
-                            Log.v("User", "Users:"+response.message());
-
+                            Log.v("User", "token:"+ result.getToken());
 
                             Intent intentHome = new Intent(TestActivity.this, HomeActivity.class);
                             startActivity(intentHome);
 
-                        } else if (response.code() == 404) {
-                            Toast.makeText(TestActivity.this, "Wrong Credentials",
-                                    Toast.LENGTH_LONG).show();
+                        }
+                        else {
 
-                            Log.v("User", "Error : "+response.errorBody());
-                        } else {
-                            Toast.makeText(TestActivity.this, "Wrong Credentials",
-                                    Toast.LENGTH_LONG).show();
-                            LoginResult result = response.body();
+                            try {
+                                Toast.makeText(TestActivity.this, "Error: "+response.errorBody().string(),
+                                        Toast.LENGTH_LONG).show();
 
-                            Log.v("User", "Response:"+ response.body());
-
-                            //Log.v("User", "Users:"+response.body());
-
-
-                            //Log.v("Response errorBody", String.valueOf(response.errorBody()));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
 
