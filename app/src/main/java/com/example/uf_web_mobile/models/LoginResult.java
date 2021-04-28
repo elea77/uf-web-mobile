@@ -18,10 +18,8 @@ public class LoginResult {
         return token;
     }
 
+
     public String getId() {
         return id;
     }
-
-
-
 }

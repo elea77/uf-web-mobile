@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -80,8 +81,15 @@ public class LoginActivity extends AppCompatActivity {
 
                             LoginResult result = response.body();
 
-                            Log.v("User", "token:"+ result.getToken());
-                            Log.v("User", "user_id:"+ result.getId());
+                            String STORAGE_NAME = "DATA";
+                            SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+
+                            // Save token and id
+                            editor.putString("token", result.getToken());
+                            editor.putString("id", result.getId());
+                            editor.commit();
+
 
                             Intent intentHome = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intentHome);

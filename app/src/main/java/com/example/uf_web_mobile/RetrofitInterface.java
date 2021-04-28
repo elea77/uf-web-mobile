@@ -1,5 +1,7 @@
 package com.example.uf_web_mobile;
 
+import android.content.SharedPreferences;
+
 import com.example.uf_web_mobile.models.AccountResult;
 import com.example.uf_web_mobile.models.LoginResult;
 import com.example.uf_web_mobile.models.Product;
@@ -10,10 +12,13 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public interface RetrofitInterface {
 
@@ -26,11 +31,7 @@ public interface RetrofitInterface {
     @GET("/api/v1/products")
     Call<List<Product>> getProducts ();
 
-    @Headers({
-            "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODgwZGQ1MmM3ZmUzMDAyY2VhMmJmMCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MTk2MDgyMDYsImV4cCI6MTYxOTY5NDYwNn0.OAmy6ukCpfeHWab0tuGerAnjowBO2PfZ8Aypc1IY5Kc"
-    })
     @GET("/api/v1/users/{id}")
-    //Call<AccountResult> getUserById(@Query("id") Integer id);
-    Call<AccountResult> getUserById(@Path("id") String id);
+    Call<AccountResult> getUserById(@Header("authorization") String token, @Path("id") String id);
 
 }

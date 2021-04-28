@@ -3,6 +3,7 @@ package com.example.uf_web_mobile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,9 +52,14 @@ public class MyAccountActivity extends AppActivity {
         lastNameView = findViewById(R.id.lastNameView);
         phoneView = findViewById(R.id.phoneView);
 
-        // listViewData = findViewById(R.id.listViewData);
-        String id = "60880dd52c7fe3002cea2bf0";
-        Call<AccountResult> call = retrofitInterface.getUserById(id);
+
+        String STORAGE_NAME = "DATA";
+        SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);
+        String id = preferences.getString("id", "");
+        String token = preferences.getString("token", "");
+
+        Call<AccountResult> call = retrofitInterface.getUserById(token, id);
+
 
         call.enqueue(new Callback<AccountResult>() {
             @Override
