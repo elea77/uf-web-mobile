@@ -83,12 +83,17 @@ public class LoginActivity extends AppCompatActivity {
 
                             String STORAGE_NAME = "DATA";
                             SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);
+                            preferences.edit().clear().commit();
+
                             SharedPreferences.Editor editor = preferences.edit();
+
 
                             // Save token and id
                             editor.putString("token", result.getToken());
                             editor.putString("id", result.getId());
                             editor.commit();
+
+                            Log.v("DATA", "datas: "+preferences.getAll());
 
 
                             Intent intentHome = new Intent(LoginActivity.this, HomeActivity.class);
