@@ -3,7 +3,9 @@ package com.example.uf_web_mobile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class HomeActivity extends AppActivity {
@@ -27,5 +29,18 @@ public class HomeActivity extends AppActivity {
     public void MyProducts(View view) {
         Intent intentProduct = new Intent(HomeActivity.this, ProductActivity.class);
         startActivity(intentProduct);
+    }
+
+    public void Logout(View view) {
+
+        String STORAGE_NAME = "DATA";
+        SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);
+        preferences.edit().clear().commit();
+
+        Log.v("Home", "all"+preferences.getAll());
+
+
+        Intent intentLogin = new Intent(HomeActivity.this, LoginActivity.class);
+        startActivity(intentLogin);
     }
 }

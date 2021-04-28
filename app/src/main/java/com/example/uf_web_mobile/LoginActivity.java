@@ -52,7 +52,20 @@ public class LoginActivity extends AppCompatActivity {
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-        handleLoginDialog();
+
+        // Get save data
+        String STORAGE_NAME = "DATA";
+        SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);
+        String token = preferences.getString("token", "");
+
+        // If user is not logged
+        if(token.isEmpty()) {
+            Intent intentHome = new Intent(LoginActivity.this, HomeActivity.class);
+            startActivity(intentHome);
+        } else {
+            handleLoginDialog();
+        }
+
 
     }
 
@@ -92,8 +105,6 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString("token", result.getToken());
                             editor.putString("id", result.getId());
                             editor.commit();
-
-                            Log.v("DATA", "datas: "+preferences.getAll());
 
 
                             Intent intentHome = new Intent(LoginActivity.this, HomeActivity.class);
