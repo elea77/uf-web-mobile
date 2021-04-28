@@ -1,7 +1,6 @@
 package com.example.uf_web_mobile;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.uf_web_mobile.models.LoginResult;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -80,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                             LoginResult result = response.body();
 
                             Log.v("User", "token:"+ result.getToken());
+                            Log.v("User", "user_id:"+ result.getId());
 
                             Intent intentHome = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intentHome);

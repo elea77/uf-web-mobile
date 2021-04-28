@@ -51,14 +51,9 @@ public class ProductsListActivity extends AppActivity {
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if(response.isSuccessful()) {
 
-
                     List<Product> productList = response.body();
 
-
                     int length = productList.size();
-
-                    Log.v("Body", "Results: "+productList);
-
 
                     for (int i = length; i < length; i++) {
 
@@ -73,9 +68,6 @@ public class ProductsListActivity extends AppActivity {
 
                     }
 
-                    Log.v("Body", "Results: "+productList);
-
-
                     listViewData.setAdapter(
                             new ProductAdapter(
                                     ProductsListActivity.this,
@@ -83,7 +75,6 @@ public class ProductsListActivity extends AppActivity {
                                     productList
                             )
                     );
-
 
 
                     listViewData.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -1,13 +1,13 @@
-package com.example.uf_web_mobile;
+package com.example.uf_web_mobile.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class LoginResult {
 
-    @SerializedName("message")
+    @SerializedName("id")
     @Expose
-    private String message;
+    private String id;
 
     @SerializedName("token")
     @Expose
@@ -18,8 +18,8 @@ public class LoginResult {
         return token;
     }
 
-    public String getMessage() {
-        return message;
+    public String getId() {
+        return id;
     }
 
 

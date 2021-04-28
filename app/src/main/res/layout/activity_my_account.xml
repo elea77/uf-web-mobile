@@ -25,11 +25,12 @@
         android:background="#ffffff"/>
 
     <TextView
+        android:id="@+id/emailView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="john.doe@gmail.com"
+        tools:text="john.doe@gmail.com"
         android:padding="30dp"
         android:textSize="20dp"
         android:textColor="@color/white" />
@@ -41,18 +42,20 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/firstNameView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="John"
+            tools:text="John"
             android:padding="30dp"
             android:gravity="center"
             android:textSize="20dp"
             android:textColor="@color/white" />
 
         <TextView
+            android:id="@+id/lastNameView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Doe"
+            tools:text="Doe"
             android:padding="30dp"
             android:gravity="center"
             android:textSize="20dp"
@@ -61,6 +64,15 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/phoneView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="0629087370"
+        android:padding="30dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="@color/white" />
 
 
 </LinearLayout>
