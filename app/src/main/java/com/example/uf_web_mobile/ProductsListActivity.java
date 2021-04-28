@@ -7,11 +7,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import com.example.uf_web_mobile.models.Product;
+
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -39,51 +43,79 @@ public class ProductsListActivity extends AppActivity {
 
         listViewData = findViewById(R.id.listViewData);
 
-        List<Product> productList = new ArrayList<>();
 
-        productList.add(new Product (
-                "Produit 1",
-                "Description",
-                "imageUrl",
-                "Price",
-                "Date",
-                "Status"
-        ));
+        Call<List<Product>> call = retrofitInterface.getProducts();
 
-        productList.add(new Product (
-                "Produit 2",
-                "Description",
-                "imageUrl",
-                "Price",
-                "Date",
-                "Status"
-        ));
-
-        listViewData.setAdapter(
-                new ProductAdapter(
-                        ProductsListActivity.this,
-                        R.layout.item_product,
-                        productList
-                )
-        );
-
-
-
-        listViewData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        call.enqueue(new Callback<List<Product>>() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if(response.isSuccessful()) {
 
-                // Objet Produit
-                Product item = productList.get(position);
 
-                // Intent
-                Intent intentProduct = new Intent(ProductsListActivity.this, ProductActivity.class);
+                    List<Product> productList = response.body();
 
-                //passage de l'objet produit
-                //intentDetails.putExtra("object", item);
-                intentProduct.putExtra("object", item);
 
-                startActivity(intentProduct);
+                    int length = productList.size();
+
+                    Log.v("Body", "Results: "+productList);
+
+
+                    for (int i = length; i < length; i++) {
+
+                        productList.add(new Product(
+                                productList.get(i).getTitle(),
+                                productList.get(i).getDescription(),
+                                productList.get(i).getImageUrl(),
+                                productList.get(i).getPrice(),
+                                productList.get(i).getDate(),
+                                productList.get(i).getStatus()
+                        ));
+
+                    }
+
+                    Log.v("Body", "Results: "+productList);
+
+
+                    listViewData.setAdapter(
+                            new ProductAdapter(
+                                    ProductsListActivity.this,
+                                    R.layout.item_product,
+                                    productList
+                            )
+                    );
+
+
+
+                    listViewData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            // Objet Produit
+                            Product item = productList.get(position);
+
+                            // Intent
+                            Intent intentProduct = new Intent(ProductsListActivity.this, ProductActivity.class);
+
+                            //passage de l'objet produit
+                            intentProduct.putExtra("object", item);
+
+                            startActivity(intentProduct);
+                        }
+                    });
+
+                } else {
+                    Toast.makeText(ProductsListActivity.this,
+                            "Error", Toast.LENGTH_LONG).show();
+                    Log.v("User", "Users:"+response.errorBody());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Toast.makeText(ProductsListActivity.this, t.getMessage(),
+                        Toast.LENGTH_LONG).show();
+                Log.v("User", "Error sign up");
+
             }
         });
     }
