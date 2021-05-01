@@ -48,7 +48,7 @@
         android:layout_marginBottom="20dp"
         android:gravity="center"
         android:hint="Description"
-        android:inputType="textPassword"
+        android:inputType="textMultiLine"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:backgroundTint="@color/white"
@@ -68,6 +68,7 @@
         android:backgroundTint="@color/white"
         android:id="@+id/imageUrlEdit"
         android:textSize="20dp" />
+
 
     <EditText
         android:layout_width="match_parent"

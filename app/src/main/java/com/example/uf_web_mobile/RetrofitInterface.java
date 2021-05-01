@@ -37,4 +37,7 @@ public interface RetrofitInterface {
     @POST("/api/v1/products")
     Call<Void> executeProduct (@Header("authorization") String token, @Body HashMap<String, String> map);
 
+    @GET("/api/v1/products/user/{id}")
+    Call<List<Product>> getProductsByUserId (@Header("authorization") String token, @Path("id") String id);
+
 }

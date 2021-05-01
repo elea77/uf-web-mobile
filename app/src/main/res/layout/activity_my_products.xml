@@ -15,18 +15,7 @@
         android:textSize="30dp"
         android:gravity="center"
         android:padding="15dp"
-        android:text="Liste des produits"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        android:textSize="18dp"
-        android:backgroundTint="@color/light_orange"
-        android:textColor="@color/white"
-        android:onClick="addProduct"
-        android:text="Ajouter un produit" />
+        android:text="Liste de mes produits"/>
 
     <View
         android:layout_width="100dp"
@@ -34,11 +23,24 @@
         android:layout_gravity="center"
         android:background="#ffffff"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+        android:backgroundTint="@color/light_orange"
+        android:textColor="@color/white"
+        android:onClick="addProduct"
+        android:text="Ajouter un produit" />
+
+
     <ListView
+        android:id="@+id/listViewData"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:background="#FFFFFF"/>
+        android:orientation="vertical"/>
 
 
 </LinearLayout>
