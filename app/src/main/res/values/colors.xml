@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="light_orange">#db7241</color>
     <color name="dark_orange">#bf5426</color>
+    <color name="red">#FF4D00</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

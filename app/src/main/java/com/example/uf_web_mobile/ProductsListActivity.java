@@ -63,6 +63,7 @@ public class ProductsListActivity extends AppActivity {
                                 productList.get(i).getImageUrl(),
                                 productList.get(i).getPrice(),
                                 productList.get(i).getDate(),
+                                productList.get(i).getTime(),
                                 productList.get(i).getStatus()
                         ));
 

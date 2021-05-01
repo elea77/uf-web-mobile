@@ -1,6 +1,7 @@
 package com.example.uf_web_mobile;
 
-import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 import com.example.uf_web_mobile.models.Product;
 import com.squareup.picasso.Picasso;
 
-public class ProductActivity extends AppActivity {
+public class MyProductActivity extends AppActivity {
 
     private TextView titleView;
     private ImageView imageUrlView;
@@ -23,7 +24,7 @@ public class ProductActivity extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product);
+        setContentView(R.layout.activity_my_product);
 
         titleView = findViewById(R.id.titleView);
         imageUrlView = findViewById(R.id.imageUrlView);
@@ -51,7 +52,5 @@ public class ProductActivity extends AppActivity {
     }
 
     public void auctionHistory(View view) {
-        Intent intentHistory = new Intent(ProductActivity.this, ProductHistoryActivity.class);
-        startActivity(intentHistory);
     }
 }

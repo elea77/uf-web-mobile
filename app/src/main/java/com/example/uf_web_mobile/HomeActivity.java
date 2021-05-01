@@ -1,11 +1,8 @@
 package com.example.uf_web_mobile;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 public class HomeActivity extends AppActivity {
@@ -27,7 +24,7 @@ public class HomeActivity extends AppActivity {
     }
 
     public void MyProducts(View view) {
-        Intent intentProduct = new Intent(HomeActivity.this, MyProductsActivity.class);
+        Intent intentProduct = new Intent(HomeActivity.this, MyProductsListActivity.class);
         startActivity(intentProduct);
     }
 

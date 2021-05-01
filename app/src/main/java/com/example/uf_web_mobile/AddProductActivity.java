@@ -1,7 +1,5 @@
 package com.example.uf_web_mobile;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.example.uf_web_mobile.models.AccountResult;
 
 import java.util.HashMap;
 
@@ -52,6 +48,7 @@ public class AddProductActivity extends AppActivity {
         EditText priceEdit = findViewById(R.id.priceEdit);
         EditText imgUrlEdit = findViewById(R.id.imageUrlEdit);
         EditText dateEdit = findViewById(R.id.dateEdit);
+        EditText timeEdit = findViewById(R.id.timeEdit);
 
         addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +67,7 @@ public class AddProductActivity extends AppActivity {
                 map.put("price", priceEdit.getText().toString());
                 map.put("imageUrl", imgUrlEdit.getText().toString());
                 map.put("date", dateEdit.getText().toString());
+                map.put("time", timeEdit.getText().toString());
                 map.put("user", id);
 
 
@@ -83,7 +81,7 @@ public class AddProductActivity extends AppActivity {
                                     "Produit ajouté avec succès", Toast.LENGTH_LONG).show();
                             Log.v("Product", "Response:"+response);
 
-                            Intent intentMyProducts = new Intent(AddProductActivity.this, MyProductsActivity.class);
+                            Intent intentMyProducts = new Intent(AddProductActivity.this, MyProductsListActivity.class);
                             startActivity(intentMyProducts);
 
                         } else {

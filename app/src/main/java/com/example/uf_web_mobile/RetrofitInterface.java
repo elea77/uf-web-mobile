@@ -40,4 +40,7 @@ public interface RetrofitInterface {
     @GET("/api/v1/products/user/{id}")
     Call<List<Product>> getProductsByUserId (@Header("authorization") String token, @Path("id") String id);
 
+    @GET("/api/v1/history/product/{id}")
+    Call<List<Product>> getProductHistory (@Header("authorization") String token, @Path("id") String id);
+
 }

@@ -1,7 +1,5 @@
 package com.example.uf_web_mobile;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,7 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MyProductsActivity extends AppActivity {
+public class MyProductsListActivity extends AppActivity {
 
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
@@ -32,7 +30,7 @@ public class MyProductsActivity extends AppActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_products);
+        setContentView(R.layout.activity_my_products_list);
 
 
         retrofit = new Retrofit.Builder()
@@ -71,6 +69,7 @@ public class MyProductsActivity extends AppActivity {
                                 productList.get(i).getImageUrl(),
                                 productList.get(i).getPrice(),
                                 productList.get(i).getDate(),
+                                productList.get(i).getTime(),
                                 productList.get(i).getStatus()
                         ));
 
@@ -78,7 +77,7 @@ public class MyProductsActivity extends AppActivity {
 
                     listViewData.setAdapter(
                             new ProductAdapter(
-                                    MyProductsActivity.this,
+                                    MyProductsListActivity.this,
                                     R.layout.item_product,
                                     productList
                             )
@@ -93,7 +92,7 @@ public class MyProductsActivity extends AppActivity {
                             Product item = productList.get(position);
 
                             // Intent
-                            Intent intentProduct = new Intent(MyProductsActivity.this, ProductActivity.class);
+                            Intent intentProduct = new Intent(MyProductsListActivity.this, MyProductActivity.class);
 
                             //passage de l'objet produit
                             intentProduct.putExtra("object", item);
@@ -103,7 +102,7 @@ public class MyProductsActivity extends AppActivity {
                     });
 
                 } else {
-                    Toast.makeText(MyProductsActivity.this,
+                    Toast.makeText(MyProductsListActivity.this,
                             "An error was encountered", Toast.LENGTH_LONG).show();
                     Log.v("Error", "An error was encountered :"+response.errorBody());
                 }
@@ -111,7 +110,7 @@ public class MyProductsActivity extends AppActivity {
 
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
-                Toast.makeText(MyProductsActivity.this, t.getMessage(),
+                Toast.makeText(MyProductsListActivity.this, t.getMessage(),
                         Toast.LENGTH_LONG).show();
                 Log.v("Error", "Error get products");
 
@@ -120,7 +119,7 @@ public class MyProductsActivity extends AppActivity {
     }
 
     public void addProduct(View view) {
-        Intent intentAddProduct = new Intent(MyProductsActivity.this, AddProductActivity.class);
+        Intent intentAddProduct = new Intent(MyProductsListActivity.this, AddProductActivity.class);
         startActivity(intentAddProduct);
     }
 }

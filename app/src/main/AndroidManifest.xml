@@ -12,9 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ufwebmobile"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AddProductActivity"></activity>
+        <activity android:name=".MyProductActivity"></activity>
+        <activity android:name=".ProductHistoryActivity" />
+        <activity android:name=".AddProductActivity" />
         <activity android:name=".ProductActivity" />
-        <activity android:name=".MyProductsActivity" />
+        <activity android:name=".MyProductsListActivity" />
         <activity android:name=".ProductsListActivity" />
         <activity android:name=".MyAccountActivity" />
         <activity android:name=".LoginActivity" />

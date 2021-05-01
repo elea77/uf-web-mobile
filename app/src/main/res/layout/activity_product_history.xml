@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background"
-    tools:context=".MyProductsActivity">
+    tools:context=".ProductHistoryActivity">
+
 
     <TextView
         android:layout_width="match_parent"
@@ -15,32 +16,22 @@
         android:textSize="30dp"
         android:gravity="center"
         android:padding="15dp"
-        android:text="Liste de mes produits"/>
+        android:text="Historique des enchères" />
 
     <View
         android:layout_width="100dp"
         android:layout_height="2dp"
         android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
         android:background="#ffffff"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginTop="10dp"
-        android:textSize="18dp"
-        android:backgroundTint="@color/light_orange"
-        android:textColor="@color/white"
-        android:onClick="addProduct"
-        android:text="Ajouter un produit" />
 
 
     <ListView
         android:id="@+id/listViewData"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+
 
 
 </LinearLayout>

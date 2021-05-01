@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background"
-    tools:context=".ProductActivity">
-
+    tools:context=".MyProductActivity">
 
     <TextView
         android:id="@+id/titleView"
@@ -103,17 +102,6 @@
                 android:textSize="16dp"
                 tools:text="Description du produit ici, description du produit ici, description du produit ici, description du produit ici, description du produit ici."/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/overbid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginRight="70dp"
-                android:layout_marginTop="10dp"
-                android:textSize="18dp"
-                android:backgroundTint="@color/light_orange"
-                android:textColor="@color/white"
-                android:text="Surenchérir" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:onClick="auctionHistory"
@@ -126,6 +114,23 @@
                 android:backgroundTint="@color/light_orange"
                 android:textColor="@color/white"
                 android:text="Historique des enchères" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/deleteProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="70dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18dp"
+                android:backgroundTint="@color/red"
+                android:textColor="@color/white"
+                android:text="Supprimer le produit" />
         </LinearLayout>
 
     </ScrollView>
