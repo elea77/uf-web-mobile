@@ -60,10 +60,10 @@ public class LoginActivity extends AppCompatActivity {
 
         // If user is not logged
         if(token.isEmpty()) {
+            handleLoginDialog();
+        } else {
             Intent intentHome = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(intentHome);
-        } else {
-            handleLoginDialog();
         }
 
 

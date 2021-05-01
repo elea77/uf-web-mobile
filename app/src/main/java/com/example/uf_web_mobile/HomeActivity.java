@@ -27,7 +27,7 @@ public class HomeActivity extends AppActivity {
     }
 
     public void MyProducts(View view) {
-        Intent intentProduct = new Intent(HomeActivity.this, ProductActivity.class);
+        Intent intentProduct = new Intent(HomeActivity.this, MyProductsActivity.class);
         startActivity(intentProduct);
     }
 

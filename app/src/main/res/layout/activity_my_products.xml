@@ -17,6 +17,17 @@
         android:padding="15dp"
         android:text="Liste des produits"/>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:textSize="18dp"
+        android:backgroundTint="@color/light_orange"
+        android:textColor="@color/white"
+        android:onClick="addProduct"
+        android:text="Ajouter un produit" />
+
     <View
         android:layout_width="100dp"
         android:layout_height="2dp"
