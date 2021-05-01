@@ -28,16 +28,13 @@ public interface RetrofitInterface {
     @POST("/api/v1/users")
     Call<Void> executeRegister (@Body HashMap<String, String> map);
 
-
-    @POST("/api/v1/products")
-    Call<Void> executeProduct (@Body HashMap<String, String> map);
-
-
     @GET("/api/v1/products")
     Call<List<Product>> getProducts ();
 
     @GET("/api/v1/users/{id}")
     Call<AccountResult> getUserById(@Header("authorization") String token, @Path("id") String id);
 
+    @POST("/api/v1/products")
+    Call<Void> executeProduct (@Header("authorization") String token, @Body HashMap<String, String> map);
 
 }

@@ -36,7 +36,7 @@
         android:textColor="@color/white"
         android:backgroundTint="@color/white"
         android:textColorHint="@color/white"
-        android:id="@+id/titreEdit"
+        android:id="@+id/titleEdit"
         android:textSize="20dp" />
 
 
@@ -90,12 +90,12 @@
         android:layout_marginHorizontal="50dp"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:hint="Date"
+        android:hint="Date de fin d'enchères"
         android:inputType="date"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:backgroundTint="@color/white"
-        android:id="@+id/phoneEdit"
+        android:id="@+id/dateEdit"
         android:textSize="20dp" />
 
 

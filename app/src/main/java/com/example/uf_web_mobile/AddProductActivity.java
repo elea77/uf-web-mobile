@@ -3,12 +3,15 @@ package com.example.uf_web_mobile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.uf_web_mobile.models.AccountResult;
 
 import java.util.HashMap;
 
@@ -37,48 +40,54 @@ public class AddProductActivity extends AppActivity {
 
         retrofitInterface = retrofit.create(RetrofitInterface.class);
 
-        // handleAddProductDialog();
+        handleAddProductDialog();
 
     }
 
     private void handleAddProductDialog() {
 
-        Button registerBtn = findViewById(R.id.register);
-        EditText emailEdit = findViewById(R.id.emailEdit);
-        EditText passwordEdit = findViewById(R.id.passwordEdit);
-        EditText firstNameEdit = findViewById(R.id.firstNameEdit);
-        EditText lastNameEdit = findViewById(R.id.lastNameEdit);
-        EditText phoneEdit = findViewById(R.id.phoneEdit);
+        Button addProductBtn = findViewById(R.id.addProduct);
+        EditText titleEdit = findViewById(R.id.titleEdit);
+        EditText descriptionEdit = findViewById(R.id.descriptionEdit);
+        EditText priceEdit = findViewById(R.id.priceEdit);
+        EditText imgUrlEdit = findViewById(R.id.imageUrlEdit);
+        EditText dateEdit = findViewById(R.id.dateEdit);
 
-        registerBtn.setOnClickListener(new View.OnClickListener() {
+        addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                // Get user data
+                String STORAGE_NAME = "DATA";
+                SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);
+                String id = preferences.getString("id", "");
+                String token = preferences.getString("token", "");
+
                 HashMap<String, String> map = new HashMap<>();
 
-                map.put("email", emailEdit.getText().toString());
-                map.put("password", passwordEdit.getText().toString());
-                map.put("firstName", firstNameEdit.getText().toString());
-                map.put("lastName", lastNameEdit.getText().toString());
-                map.put("phone", phoneEdit.getText().toString());
+                map.put("title", titleEdit.getText().toString());
+                map.put("description", descriptionEdit.getText().toString());
+                map.put("price", priceEdit.getText().toString());
+                map.put("imageUrl", imgUrlEdit.getText().toString());
+                map.put("date", dateEdit.getText().toString());
+                map.put("user", id);
 
 
-                Call<Void> call = retrofitInterface.executeRegister(map);
+                Call<Void> call = retrofitInterface.executeProduct(token, map);
 
                 call.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if(response.isSuccessful()) {
                             Toast.makeText(AddProductActivity.this,
-                                    "Signed up successfully", Toast.LENGTH_LONG).show();
-                            Log.v("User", "Users:"+response);
+                                    "Produit ajouté avec succès", Toast.LENGTH_LONG).show();
+                            Log.v("Product", "Response:"+response);
 
-                            Intent intentLogin = new Intent(AddProductActivity.this, LoginActivity.class);
-                            startActivity(intentLogin);
-                            finish();
+                            Intent intentMyProducts = new Intent(AddProductActivity.this, MyProductsActivity.class);
+                            startActivity(intentMyProducts);
 
                         } else {
-                            Log.v("User", "Users:"+response.errorBody());
+                            Log.v("Product", "Error:"+response.errorBody());
                         }
                     }
 
@@ -86,7 +95,7 @@ public class AddProductActivity extends AppActivity {
                     public void onFailure(Call<Void> call, Throwable t) {
                         Toast.makeText(AddProductActivity.this, t.getMessage(),
                                 Toast.LENGTH_LONG).show();
-                        Log.v("User", "Error sign up");
+                        Log.v("Product", "Error adding product");
 
                     }
                 });

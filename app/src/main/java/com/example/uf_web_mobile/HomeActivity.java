@@ -37,8 +37,7 @@ public class HomeActivity extends AppActivity {
         SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);
         preferences.edit().clear().commit();
 
-        Log.v("Home", "all"+preferences.getAll());
-
+        //Log.v("Home", "all"+preferences.getAll());
 
         Intent intentLogin = new Intent(HomeActivity.this, LoginActivity.class);
         startActivity(intentLogin);
