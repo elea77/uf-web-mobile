@@ -13,6 +13,7 @@ public class Product implements Serializable {
     private String date;
     private String time;
     private String status;
+    private String user;
 
     public Product(String title, String description, String imageUrl, String price, String date, String time, String status) {
         this.title = title;
@@ -78,5 +79,9 @@ public class Product implements Serializable {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getUser() {
+        return user;
     }
 }

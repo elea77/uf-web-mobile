@@ -2,6 +2,7 @@ package com.example.uf_web_mobile;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -85,12 +86,27 @@ public class ProductsListActivity extends AppActivity {
                             // Objet Produit
                             Product item = productList.get(position);
 
-                            // Intent
-                            Intent intentProduct = new Intent(ProductsListActivity.this, ProductActivity.class);
+                            String STORAGE_NAME = "DATA";
+                            SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);
+                            String userId = preferences.getString("id", "");
+
+                            String productUserId = productList.get(position).getUser();
+
+                            Log.v("User", userId);
+                            Log.v("User", productUserId);
+
+                            Intent intentProduct;
+                            if(productUserId.equals(userId)) {
+                                // Intent
+                                intentProduct = new Intent(ProductsListActivity.this, MyProductActivity.class);
+
+                            } else {
+                                // Intent
+                                intentProduct = new Intent(ProductsListActivity.this, ProductActivity.class);
+                            }
 
                             //passage de l'objet produit
                             intentProduct.putExtra("object", item);
-
                             startActivity(intentProduct);
                         }
                     });
