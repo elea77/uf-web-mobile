@@ -1,5 +1,6 @@
 package com.example.uf_web_mobile;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,6 +51,22 @@ public class ProductActivity extends AppActivity {
                     .load(item.getImageUrl())
                     .into(imageUrlView);
         }
+
+        findViewById(R.id.overbid).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleOverbidDialog();
+            }
+        });
+    }
+
+    private void handleOverbidDialog() {
+        View view = getLayoutInflater().inflate(R.layout.overbid_dialog, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setView(view).show();
+
     }
 
     public void auctionHistory(View view) {

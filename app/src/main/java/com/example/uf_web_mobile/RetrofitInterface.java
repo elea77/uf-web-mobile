@@ -12,6 +12,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
@@ -43,5 +44,9 @@ public interface RetrofitInterface {
 
     @GET("/api/v1/history/product/{id}")
     Call<List<History>> getProductHistory (@Header("authorization") String token, @Path("id") String id);
+
+    @DELETE("/api/v1/products/{id}")
+    Call<Void> deleteProduct (@Header("authorization") String token, @Path("id") String id);
+
 
 }

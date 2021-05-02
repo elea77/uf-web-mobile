@@ -42,16 +42,6 @@
                 android:layout_marginTop="20dp"
                 tools:src="@drawable/ic_launcher_foreground"/>
 
-            <TextView
-                android:id="@+id/priceView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:textSize="20dp"
-                android:padding="15dp"
-                tools:text="135 €"/>
-
 
             <TextView
                 android:layout_width="match_parent"
@@ -93,6 +83,18 @@
 
 
             <TextView
+                android:id="@+id/priceView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="22dp"
+                android:padding="15dp"
+                tools:text="135 €"/>
+
+
+
+            <TextView
                 android:id="@+id/descriptionView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,6 +128,12 @@
                 android:backgroundTint="@color/light_orange"
                 android:textColor="@color/white"
                 android:text="Historique des enchères" />
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
         </LinearLayout>
 
     </ScrollView>

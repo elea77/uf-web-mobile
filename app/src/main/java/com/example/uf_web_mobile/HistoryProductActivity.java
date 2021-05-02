@@ -47,7 +47,10 @@ public class HistoryProductActivity extends AppActivity {
 
 
         if(getIntent().getExtras() != null) {
+
+            // Get product id
             String id = (String) getIntent().getExtras().get("id");
+
             // Get user data
             String STORAGE_NAME = "DATA";
             SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);

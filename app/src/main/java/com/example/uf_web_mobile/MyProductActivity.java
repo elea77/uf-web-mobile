@@ -2,13 +2,25 @@ package com.example.uf_web_mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.uf_web_mobile.models.Product;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MyProductActivity extends AppActivity {
 
@@ -20,6 +32,11 @@ public class MyProductActivity extends AppActivity {
     private TextView descriptionView;
 
     private Product item;
+
+    private Retrofit retrofit;
+    private RetrofitInterface retrofitInterface;
+    private String BASE_URL = "https://ufweb-backend-grp1.herokuapp.com/";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,5 +69,60 @@ public class MyProductActivity extends AppActivity {
     }
 
     public void auctionHistory(View view) {
+        if(getIntent().getExtras() != null) {
+            item = (Product) getIntent().getExtras().get("object");
+            String id = item.get_id();
+
+            Intent intentHistory = new Intent(MyProductActivity.this, HistoryProductActivity.class);
+            intentHistory.putExtra("id", id);
+            startActivity(intentHistory);
+        }
+    }
+
+    public void deleteProduct(View view) {
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        retrofitInterface = retrofit.create(RetrofitInterface.class);
+
+        // Get user token
+        String STORAGE_NAME = "DATA";
+        SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);
+        String token = preferences.getString("token", "");
+
+        if(getIntent().getExtras() != null) {
+
+            // Get product id
+            item = (Product) getIntent().getExtras().get("object");
+            String id = item.get_id();
+
+            Call<Void> call = retrofitInterface.deleteProduct(token, id);
+
+            call.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if(response.isSuccessful()) {
+                        Log.v("Success3", "success3");
+
+                        Intent intentProduct = new Intent(MyProductActivity.this, MyProductsListActivity.class);
+                        startActivity(intentProduct);
+                        finish();
+                    } else {
+                        Toast.makeText(MyProductActivity.this, response.message(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Toast.makeText(MyProductActivity.this, t.getMessage(),
+                            Toast.LENGTH_LONG).show();
+                }
+            });
+
+        }
     }
 }
