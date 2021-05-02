@@ -59,6 +59,7 @@ public class ProductsListActivity extends AppActivity {
                     for (int i = length; i < length; i++) {
 
                         productList.add(new Product(
+                                productList.get(i).get_id(),
                                 productList.get(i).getTitle(),
                                 productList.get(i).getDescription(),
                                 productList.get(i).getImageUrl(),
@@ -92,8 +93,6 @@ public class ProductsListActivity extends AppActivity {
 
                             String productUserId = productList.get(position).getUser();
 
-                            Log.v("User", userId);
-                            Log.v("User", productUserId);
 
                             Intent intentProduct;
                             if(productUserId.equals(userId)) {
@@ -114,7 +113,6 @@ public class ProductsListActivity extends AppActivity {
                 } else {
                     Toast.makeText(ProductsListActivity.this,
                             "Error", Toast.LENGTH_LONG).show();
-                    Log.v("User", "Users:"+response.errorBody());
                 }
             }
 
@@ -122,7 +120,6 @@ public class ProductsListActivity extends AppActivity {
             public void onFailure(Call<List<Product>> call, Throwable t) {
                 Toast.makeText(ProductsListActivity.this, t.getMessage(),
                         Toast.LENGTH_LONG).show();
-                Log.v("User", "Error sign up");
 
             }
         });

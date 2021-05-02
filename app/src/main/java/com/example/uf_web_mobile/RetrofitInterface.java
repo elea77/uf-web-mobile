@@ -3,6 +3,7 @@ package com.example.uf_web_mobile;
 import android.content.SharedPreferences;
 
 import com.example.uf_web_mobile.models.AccountResult;
+import com.example.uf_web_mobile.models.History;
 import com.example.uf_web_mobile.models.LoginResult;
 import com.example.uf_web_mobile.models.Product;
 
@@ -41,6 +42,6 @@ public interface RetrofitInterface {
     Call<List<Product>> getProductsByUserId (@Header("authorization") String token, @Path("id") String id);
 
     @GET("/api/v1/history/product/{id}")
-    Call<List<Product>> getProductHistory (@Header("authorization") String token, @Path("id") String id);
+    Call<List<History>> getProductHistory (@Header("authorization") String token, @Path("id") String id);
 
 }

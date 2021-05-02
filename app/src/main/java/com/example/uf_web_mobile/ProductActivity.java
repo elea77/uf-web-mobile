@@ -2,10 +2,12 @@ package com.example.uf_web_mobile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.uf_web_mobile.models.History;
 import com.example.uf_web_mobile.models.Product;
 import com.squareup.picasso.Picasso;
 
@@ -51,7 +53,13 @@ public class ProductActivity extends AppActivity {
     }
 
     public void auctionHistory(View view) {
-        Intent intentHistory = new Intent(ProductActivity.this, ProductHistoryActivity.class);
-        startActivity(intentHistory);
+        if(getIntent().getExtras() != null) {
+            item = (Product) getIntent().getExtras().get("object");
+            String id = item.get_id();
+
+            Intent intentHistory = new Intent(ProductActivity.this, HistoryProductActivity.class);
+            intentHistory.putExtra("id", id);
+            startActivity(intentHistory);
+        }
     }
 }

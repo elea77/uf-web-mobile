@@ -64,6 +64,7 @@ public class MyProductsListActivity extends AppActivity {
                     for (int i = length; i < length; i++) {
 
                         productList.add(new Product(
+                                productList.get(i).get_id(),
                                 productList.get(i).getTitle(),
                                 productList.get(i).getDescription(),
                                 productList.get(i).getImageUrl(),
@@ -112,7 +113,6 @@ public class MyProductsListActivity extends AppActivity {
             public void onFailure(Call<List<Product>> call, Throwable t) {
                 Toast.makeText(MyProductsListActivity.this, t.getMessage(),
                         Toast.LENGTH_LONG).show();
-                Log.v("Error", "Error get products");
 
             }
         });

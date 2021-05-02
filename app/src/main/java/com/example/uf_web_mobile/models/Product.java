@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
 
+    private String _id;
     private String title;
     private String description;
     private String imageUrl;
@@ -15,7 +16,8 @@ public class Product implements Serializable {
     private String status;
     private String user;
 
-    public Product(String title, String description, String imageUrl, String price, String date, String time, String status) {
+    public Product(String _id, String title, String description, String imageUrl, String price, String date, String time, String status) {
+        this._id = _id;
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
@@ -83,5 +85,13 @@ public class Product implements Serializable {
 
     public String getUser() {
         return user;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }
