@@ -93,37 +93,6 @@
                 android:textSize="20dp" />
 
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="50dp"
-                android:layout_marginBottom="20dp"
-                android:gravity="center"
-                android:hint="Date de fin d'enchères"
-                android:inputType="date"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:backgroundTint="@color/white"
-                android:id="@+id/dateEdit"
-                android:textSize="20dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="50dp"
-                android:layout_marginBottom="20dp"
-                android:gravity="center"
-                android:hint="Heure de fin d'enchères"
-                android:inputType="time"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:backgroundTint="@color/white"
-                android:id="@+id/timeEdit"
-                android:textSize="20dp" />
-
-
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,7 +105,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp"/>
+                android:layout_height="50dp"/>
 
         </LinearLayout>
 

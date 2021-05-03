@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -47,8 +50,6 @@ public class AddProductActivity extends AppActivity {
         EditText descriptionEdit = findViewById(R.id.descriptionEdit);
         EditText priceEdit = findViewById(R.id.priceEdit);
         EditText imgUrlEdit = findViewById(R.id.imageUrlEdit);
-        EditText dateEdit = findViewById(R.id.dateEdit);
-        EditText timeEdit = findViewById(R.id.timeEdit);
 
         addProductBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,14 +61,25 @@ public class AddProductActivity extends AppActivity {
                 String id = preferences.getString("id", "");
                 String token = preferences.getString("token", "");
 
+
+                // Get datetime now
+                Date now = new Date();
+
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MM/YYYY");
+                String dateResult = dateFormatter.format(now);
+
+                SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm");
+                String timeResult = timeFormatter.format(now);
+
+
                 HashMap<String, String> map = new HashMap<>();
 
                 map.put("title", titleEdit.getText().toString());
                 map.put("description", descriptionEdit.getText().toString());
                 map.put("price", priceEdit.getText().toString());
                 map.put("imageUrl", imgUrlEdit.getText().toString());
-                map.put("date", dateEdit.getText().toString());
-                map.put("time", timeEdit.getText().toString());
+                map.put("date", dateResult);
+                map.put("time", timeResult);
                 map.put("user", id);
 
 
@@ -85,7 +97,7 @@ public class AddProductActivity extends AppActivity {
                             startActivity(intentMyProducts);
 
                         } else {
-                            Log.v("Product", "Error:"+response.errorBody());
+                            Log.v("Product", "Error:"+response.message());
                         }
                     }
 

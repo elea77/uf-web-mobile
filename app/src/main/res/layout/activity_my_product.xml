@@ -49,7 +49,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textSize="16dp"
-                android:text="Date de fin d'enchères:"/>
+                android:text="Date de mise en vente :"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
                     android:padding="10dp"
                     android:textColor="@color/white"
                     android:gravity="center"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     tools:text="20/04/2021"/>
 
                 <TextView
@@ -74,7 +74,7 @@
                     android:padding="10dp"
                     android:textColor="@color/white"
                     android:gravity="center"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     tools:text="17h30"/>
 
 
@@ -117,6 +117,23 @@
 
             <Space
                 android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/acceptSale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="70dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18dp"
+                android:backgroundTint="@color/light_orange"
+                android:textColor="@color/white"
+                android:text="Accepter la vente" />
+
+            <Space
+                android:layout_width="match_parent"
                 android:layout_height="40dp" />
 
 
@@ -131,6 +148,12 @@
                 android:backgroundTint="@color/red"
                 android:textColor="@color/white"
                 android:text="Supprimer le produit" />
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
         </LinearLayout>
 
     </ScrollView>

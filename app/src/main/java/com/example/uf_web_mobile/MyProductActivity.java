@@ -2,11 +2,14 @@ package com.example.uf_web_mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,6 +69,38 @@ public class MyProductActivity extends AppActivity {
                     .load(item.getImageUrl())
                     .into(imageUrlView);
         }
+
+        findViewById(R.id.acceptSale).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleConfirmDialog();
+            }
+        });
+    }
+
+    private void handleConfirmDialog() {
+        View view = getLayoutInflater().inflate(R.layout.confirmation_dialog, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setPositiveButton("Annuler", new DialogInterface.OnClickListener() {
+            @Override
+                public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.setView(view).show();
+
+        Button confirmBtn = view.findViewById(R.id.confirm);
+
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v("ACCEPT SALE", "SUCCESS");
+            }
+        });
+
     }
 
     public void auctionHistory(View view) {
@@ -105,7 +140,6 @@ public class MyProductActivity extends AppActivity {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if(response.isSuccessful()) {
-                        Log.v("Success3", "success3");
 
                         Intent intentProduct = new Intent(MyProductActivity.this, MyProductsListActivity.class);
                         startActivity(intentProduct);
