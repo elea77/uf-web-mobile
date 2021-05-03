@@ -6,13 +6,15 @@
     android:orientation="vertical">
 
     <EditText
+        android:id="@+id/priceEdit"
+        android:inputType="numberDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:hint="Saisir votre enchère maximum"
-        android:id="@+id/maxAuction" />
+        android:hint="Saisir votre enchère maximum" />
 
     <Button
+        android:id="@+id/overbid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"

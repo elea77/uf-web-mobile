@@ -13,10 +13,10 @@ public class Product implements Serializable {
     private String price;
     private String date;
     private String time;
-    private String status;
+    private boolean status;
     private String user;
 
-    public Product(String _id, String title, String description, String imageUrl, String price, String date, String time, String status) {
+    public Product(String _id, String title, String description, String imageUrl, String price, String date, String time, boolean status) {
         this._id = _id;
         this.title = title;
         this.description = description;
@@ -67,13 +67,6 @@ public class Product implements Serializable {
         this.date = date;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getTime() {
         return time;
@@ -93,5 +86,13 @@ public class Product implements Serializable {
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

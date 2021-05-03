@@ -71,7 +71,7 @@ public class MyProductsListActivity extends AppActivity {
                                 productList.get(i).getPrice(),
                                 productList.get(i).getDate(),
                                 productList.get(i).getTime(),
-                                productList.get(i).getStatus()
+                                productList.get(i).isStatus()
                         ));
 
                     }
@@ -92,12 +92,18 @@ public class MyProductsListActivity extends AppActivity {
                             // Objet Produit
                             Product item = productList.get(position);
 
-                            // Intent
-                            Intent intentProduct = new Intent(MyProductsListActivity.this, MyProductActivity.class);
+                            boolean status = item.isStatus();
 
+                            Intent intentProduct;
+                            if(status == true) {
+                                // Intent
+                                intentProduct = new Intent(MyProductsListActivity.this, MyProductActivity.class);
+                            } else {
+                                // Intent
+                                intentProduct = new Intent(MyProductsListActivity.this, MySoldProductActivity.class);
+                            }
                             //passage de l'objet produit
                             intentProduct.putExtra("object", item);
-
                             startActivity(intentProduct);
                         }
                     });

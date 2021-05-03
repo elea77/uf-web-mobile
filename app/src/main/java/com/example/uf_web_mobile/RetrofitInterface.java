@@ -48,5 +48,6 @@ public interface RetrofitInterface {
     @DELETE("/api/v1/products/{id}")
     Call<Void> deleteProduct (@Header("authorization") String token, @Path("id") String id);
 
-
+    @POST("/api/v1/history")
+    Call<Void> executeOverbid (@Header("authorization") String token, @Body HashMap<String, String> map);
 }

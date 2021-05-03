@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background"
-    tools:context=".MyProductActivity">
+    tools:context=".MySoldProductActivity">
+
 
     <TextView
         android:id="@+id/titleView"
@@ -81,6 +82,15 @@
             </LinearLayout>
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="22dp"
+                android:padding="15dp"
+                android:text="Ce produit "/>
+
+            <TextView
                 android:id="@+id/priceView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,40 +125,15 @@
                 android:textColor="@color/white"
                 android:text="Historique des enchères" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
 
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/acceptSale"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginRight="70dp"
-                android:layout_marginTop="10dp"
-                android:textSize="18dp"
-                android:backgroundTint="@color/green"
-                android:textColor="@color/white"
-                android:text="Accepter la vente" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:onClick="deleteProduct"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginRight="70dp"
-                android:layout_marginTop="10dp"
-                android:textSize="18dp"
-                android:backgroundTint="@color/red"
-                android:textColor="@color/white"
-                android:text="Supprimer le produit" />
-
+                android:text="Ce produit a déjà été vendu"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textSize="20dp"
+                android:textColor="@color/white"/>
 
             <Space
                 android:layout_width="match_parent"

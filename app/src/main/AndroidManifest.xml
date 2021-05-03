@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ufwebmobile"
         android:usesCleartextTraffic="true">
-        <activity android:name=".HistoryProductActivity"></activity>
+        <activity android:name=".MySoldProductActivity"></activity>
+        <activity android:name=".HistoryProductActivity" />
         <activity android:name=".MyProductActivity" />
         <activity android:name=".ProductHistoryActivity" />
         <activity android:name=".AddProductActivity" />
