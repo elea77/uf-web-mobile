@@ -154,26 +154,21 @@ public class ProductActivity extends AppActivity {
                                 Toast.makeText(ProductActivity.this,
                                         "Succès", Toast.LENGTH_LONG).show();
 
-                                // Rechargement de la page
-                                Intent intentProduct;
-                                intentProduct = new Intent(ProductActivity.this, ProductActivity.class);
-                                //passage de l'objet produit
-                                intentProduct.putExtra("object", item);
-                                startActivity(intentProduct);
-
                             } else {
                                 Toast.makeText(ProductActivity.this, response.message(),
                                         Toast.LENGTH_LONG).show();
 
-                                // Rechargement de la page
-                                Intent intentProduct;
-                                intentProduct = new Intent(ProductActivity.this, ProductActivity.class);
-                                //passage de l'objet produit
-                                intentProduct.putExtra("object", item);
-                                startActivity(intentProduct);
-                                finish();
-
                             }
+
+                            // Rechargement de la page
+                            Intent intentProduct;
+                            intentProduct = new Intent(ProductActivity.this, ProductsListActivity.class);
+
+                            //passage de l'objet produit
+                            //intentProduct.putExtra("object", item);
+                            startActivity(intentProduct);
+
+                            finish();
                         }
 
                         @Override

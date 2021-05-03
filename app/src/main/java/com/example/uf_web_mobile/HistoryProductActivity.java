@@ -86,7 +86,6 @@ public class HistoryProductActivity extends AppActivity {
                                 )
                         );
 
-
                     } else {
                         Toast.makeText(HistoryProductActivity.this,
                                 "An error was encountered", Toast.LENGTH_LONG).show();
