@@ -17,6 +17,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -50,4 +51,8 @@ public interface RetrofitInterface {
 
     @POST("/api/v1/history")
     Call<Void> executeOverbid (@Header("authorization") String token, @Body HashMap<String, String> map);
+
+    @Headers({"Content-Type: application/json"})
+    @PUT("/api/v1/products/{id}")
+    Call<Void> modifyProduct (@Header("authorization") String token, @Body HashMap<String, String> map, @Path("id") String id);
 }

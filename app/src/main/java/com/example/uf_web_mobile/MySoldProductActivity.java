@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import retrofit2.Retrofit;
 
-public class MySoldProductActivity extends AppCompatActivity {
+public class MySoldProductActivity extends AppActivity {
 
     private TextView titleView;
     private ImageView imageUrlView;

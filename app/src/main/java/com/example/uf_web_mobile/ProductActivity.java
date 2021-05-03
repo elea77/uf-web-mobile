@@ -171,6 +171,8 @@ public class ProductActivity extends AppActivity {
                                 //passage de l'objet produit
                                 intentProduct.putExtra("object", item);
                                 startActivity(intentProduct);
+                                finish();
+
                             }
                         }
 
@@ -197,6 +199,7 @@ public class ProductActivity extends AppActivity {
             Intent intentHistory = new Intent(ProductActivity.this, HistoryProductActivity.class);
             intentHistory.putExtra("id", id);
             startActivity(intentHistory);
+            finish();
         }
     }
 }

@@ -138,7 +138,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:onClick="deleteProduct"
+                android:id="@+id/deleteProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="70dp"

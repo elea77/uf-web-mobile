@@ -95,6 +95,7 @@ public class AddProductActivity extends AppActivity {
 
                             Intent intentMyProducts = new Intent(AddProductActivity.this, MyProductsListActivity.class);
                             startActivity(intentMyProducts);
+                            finish();
 
                         } else {
                             Log.v("Product", "Error:"+response.message());
@@ -109,7 +110,6 @@ public class AddProductActivity extends AppActivity {
 
                     }
                 });
-
             }
         });
     }

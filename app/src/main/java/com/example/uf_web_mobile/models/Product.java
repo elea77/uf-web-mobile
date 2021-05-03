@@ -1,5 +1,6 @@
 package com.example.uf_web_mobile.models;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -13,6 +14,9 @@ public class Product implements Serializable {
     private String price;
     private String date;
     private String time;
+
+    @SerializedName("status")
+    @Expose
     private boolean status;
     private String user;
 

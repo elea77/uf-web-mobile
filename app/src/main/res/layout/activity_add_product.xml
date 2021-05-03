@@ -86,6 +86,7 @@
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
                 android:hint="Prix"
+                android:inputType="numberDecimal"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:backgroundTint="@color/white"
