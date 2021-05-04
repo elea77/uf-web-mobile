@@ -153,22 +153,24 @@ public class ProductActivity extends AppActivity {
                             if(response.isSuccessful()) {
                                 Toast.makeText(ProductActivity.this,
                                         "Succès", Toast.LENGTH_LONG).show();
+                                // Rechargement de la page
+                                Intent intentProduct;
+                                intentProduct = new Intent(ProductActivity.this, ProductsListActivity.class);
+
+                                //passage de l'objet produit
+                                //intentProduct.putExtra("object", item);
+                                startActivity(intentProduct);
+                                finish();
 
                             } else {
-                                Toast.makeText(ProductActivity.this, response.message(),
+                                Toast.makeText(ProductActivity.this, "Le prix proposé doit être supérieur au précédent !",
                                         Toast.LENGTH_LONG).show();
 
                             }
 
-                            // Rechargement de la page
-                            Intent intentProduct;
-                            intentProduct = new Intent(ProductActivity.this, ProductsListActivity.class);
 
-                            //passage de l'objet produit
-                            //intentProduct.putExtra("object", item);
-                            startActivity(intentProduct);
 
-                            finish();
+
                         }
 
                         @Override

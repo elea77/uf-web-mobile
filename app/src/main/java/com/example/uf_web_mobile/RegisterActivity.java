@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -78,13 +82,9 @@ public class RegisterActivity extends AppActivity {
                             startActivity(intentLogin);
                             finish();
 
-                        } else if (response.code() == 400) {
-                            Toast.makeText(RegisterActivity.this,
-                                    "Already registered", Toast.LENGTH_LONG).show();
-                            Log.v("User", "Users:"+response.errorBody());
-
                         } else {
-                            Log.v("User", "Users:"+response.errorBody());
+                            Toast.makeText(RegisterActivity.this,
+                                    "Une erreur c'est produite ! Réessayer", Toast.LENGTH_LONG).show();
                         }
                     }
 

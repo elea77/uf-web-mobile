@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import com.example.uf_web_mobile.models.LoginResult;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -114,10 +117,14 @@ public class LoginActivity extends AppCompatActivity {
                         else {
 
                             try {
-                                Toast.makeText(LoginActivity.this, "Error: "+response.errorBody().string(),
+                                String jsonString = response.errorBody().string();
+                                JSONObject obj = new JSONObject(jsonString);
+                                String error = obj.getString("message");
+
+                                Toast.makeText(LoginActivity.this, "Error: "+error,
                                         Toast.LENGTH_LONG).show();
 
-                            } catch (IOException e) {
+                            } catch (IOException | JSONException e) {
                                 e.printStackTrace();
                             }
                         }
