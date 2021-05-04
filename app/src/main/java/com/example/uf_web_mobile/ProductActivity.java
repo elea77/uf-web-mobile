@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.uf_web_mobile.models.AccountResult;
 import com.example.uf_web_mobile.models.History;
 import com.example.uf_web_mobile.models.Product;
 import com.squareup.picasso.Picasso;
@@ -35,6 +36,7 @@ public class ProductActivity extends AppActivity {
     private TextView dateView;
     private TextView timeView;
     private TextView descriptionView;
+    private TextView userView;
 
     private Product item;
 
@@ -64,6 +66,9 @@ public class ProductActivity extends AppActivity {
         timeView = findViewById(R.id.timeView);
         descriptionView = findViewById(R.id.descriptionView);
 
+        userView = findViewById(R.id.userView);
+
+
         // récupération de l'objet
         if(getIntent().getExtras() != null) {
             item = (Product) getIntent().getExtras().get("object");
@@ -80,6 +85,48 @@ public class ProductActivity extends AppActivity {
                     .load(item.getImageUrl())
                     .into(imageUrlView);
         }
+
+
+        String STORAGE_NAME = "DATA";
+        SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);
+        String token = preferences.getString("token", "");
+        String id = item.getUser();
+
+        Call<AccountResult> call = retrofitInterface.getUserById(token, id);
+
+
+        call.enqueue(new Callback<AccountResult>() {
+            @Override
+            public void onResponse(Call<AccountResult> call, Response<AccountResult> response) {
+                if(response.isSuccessful()) {
+
+
+                    Log.v("User", "Results"+ response.body());
+
+                    AccountResult user = response.body();
+
+                    // mise à jour des informations
+                    userView.setText(user.getEmail());
+
+
+                } else {
+                    Toast.makeText(ProductActivity.this,
+                            "Error", Toast.LENGTH_LONG).show();
+
+                    Log.v("User", "Errors:"+response.errorBody());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AccountResult> call, Throwable t) {
+                Toast.makeText(ProductActivity.this, t.getMessage(),
+                        Toast.LENGTH_LONG).show();
+                Log.v("User", "Error sign up");
+
+            }
+        });
+
+
 
         findViewById(R.id.overbid).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,8 +214,6 @@ public class ProductActivity extends AppActivity {
                                         Toast.LENGTH_LONG).show();
 
                             }
-
-
 
 
                         }

@@ -14,13 +14,13 @@ public class Product implements Serializable {
     private String price;
     private String date;
     private String time;
+    private String user;
 
     @SerializedName("status")
     @Expose
     private boolean status;
-    private String user;
 
-    public Product(String _id, String title, String description, String imageUrl, String price, String date, String time, boolean status) {
+    public Product(String _id, String title, String description, String imageUrl, String price, String date, String time, boolean status, String user) {
         this._id = _id;
         this.title = title;
         this.description = description;
@@ -29,6 +29,7 @@ public class Product implements Serializable {
         this.date = date;
         this.time = time;
         this.status = status;
+        this.user = user;
     }
 
     public String getTitle() {
@@ -80,9 +81,6 @@ public class Product implements Serializable {
         this.time = time;
     }
 
-    public String getUser() {
-        return user;
-    }
 
     public String get_id() {
         return _id;
@@ -98,5 +96,13 @@ public class Product implements Serializable {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 }

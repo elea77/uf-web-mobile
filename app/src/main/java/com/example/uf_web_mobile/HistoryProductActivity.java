@@ -73,16 +73,22 @@ public class HistoryProductActivity extends AppActivity {
                             historyList.add(new History(
                                     historyList.get(i).getPriceH(),
                                     historyList.get(i).getDateH(),
-                                    historyList.get(i).getTimeH()
+                                    historyList.get(i).getTimeH(),
+                                    historyList.get(i).getUser()
                             ));
 
                         }
+
+                        String STORAGE_NAME = "DATA";
+                        SharedPreferences preferences = getSharedPreferences(STORAGE_NAME,MODE_PRIVATE);
+                        String token = preferences.getString("token", "");
 
                         listViewData.setAdapter(
                                 new HistoryAdapter(
                                         HistoryProductActivity.this,
                                         R.layout.item_history,
-                                        historyList
+                                        historyList,
+                                        token
                                 )
                         );
 

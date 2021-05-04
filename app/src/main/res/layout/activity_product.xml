@@ -105,6 +105,20 @@
                 android:textSize="16dp"
                 tools:text="Description du produit ici, description du produit ici, description du produit ici, description du produit ici, description du produit ici."/>
 
+
+
+            <TextView
+                android:id="@+id/userView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                tools:text="Adresse email" />
+
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/overbid"
                 android:layout_width="match_parent"

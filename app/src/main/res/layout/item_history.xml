@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/priceView"
-        android:textSize="16dp"
+        android:textSize="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Price"
@@ -16,13 +16,21 @@
 
     <TextView
         android:id="@+id/dateView"
-        android:textSize="12dp"
+        android:textSize="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Date et heure de l'enchère"
         android:textColor="@color/white"
         android:padding="10dp"/>
 
+    <TextView
+        android:id="@+id/userView"
+        android:textSize="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Email utilisateur"
+        android:textColor="@color/white"
+        android:padding="10dp"/>
 
 
 </LinearLayout>
