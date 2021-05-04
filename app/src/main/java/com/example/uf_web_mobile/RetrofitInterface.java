@@ -52,7 +52,6 @@ public interface RetrofitInterface {
     @POST("/api/v1/history")
     Call<Void> executeOverbid (@Header("authorization") String token, @Body HashMap<String, String> map);
 
-    @Headers({"Content-Type: application/json"})
     @PUT("/api/v1/products/{id}")
     Call<Void> modifyProduct (@Header("authorization") String token, @Body HashMap<String, String> map, @Path("id") String id);
 }
